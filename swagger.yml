@@ -1,0 +1,111 @@
+swagger: "2.0"
+info:
+  description: "This document highlights some of the endpoints for BlueSound"
+  version: "1.0.0"
+  title: "Bluesound API"
+  contact:
+    email: "carsten@lutzen.dk"
+  license:
+    name: "MIT License"
+host: "192.168.0.102:11000"
+basePath: "/"
+tags:
+- name: "status"
+  description: "Status on the devices"
+schemes:
+- "http"
+paths:
+  /SyncStatus:
+    post:
+      tags:
+      - "status"
+      summary: "Returns information about the player"
+      description: "Returns highlevel information about the device"
+      operationId: "SyncStatus"
+      produces:
+      - "application/xml"
+      responses:
+        200:
+          description: "The document"
+          schema:
+            $ref: "#/definitions/SyncStatus"
+definitions:
+  SyncStatus:
+    type: object
+    properties:
+      icon:
+        description: The icon for this player
+        type: string
+        xml:
+            attribute: true
+      channelMode:
+        description: The channel mode for this player
+        type: string
+        xml:
+            attribute: true
+      modelName:
+        description: The name of the model
+        type: string
+        xml:
+          attribute: true
+      model:
+        description: The name of the model
+        type: string
+        xml:
+          attribute: true
+      brand:
+        description: The brand of the player
+        type: string
+        xml:
+          attribute: true
+      id:
+        description: The ID of the player, seems to be the absolute URL
+        type: string
+        xml:
+          attribute: true
+      mac:
+        description: The ID of the player, seems to be the absolute URL
+        type: string
+        xml:
+          attribute: true
+      volume:
+        description: The current volume of the player
+        type: string
+        xml:
+          attribute: true
+      name:
+        description: The user defined name of the player
+        type: string
+        xml:
+          attribute: true
+      zoneSlave:
+        description: "\"true\" if this player is in a zone and not the master"
+        type: string
+        xml:
+          attribute: true
+      etag:
+        description: The etag?
+        type: string
+        xml:
+          attribute: true
+      schemaVersion:
+        description: The schema version of this player
+        type: string
+        xml:
+          attribute: true
+      syncStat:
+        description: The sync stat?
+        type: string
+        xml:
+          attribute: true
+      master:
+        description: The value is the IP of the master
+        type: object
+        properties:
+          port:
+            type: string
+            description: The port
+            xml:
+              attribute: true
+              
+        
